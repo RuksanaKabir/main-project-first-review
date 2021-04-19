@@ -1,19 +1,3 @@
-
-<?php
-session_start();
- if($_SESSION['status']!="Active")
-{
-    header("location:../login.php");
-}
-
-include 'dbconn.php';
-$id =$_SESSION["id"];
-
-	?>
-
-
-
-
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -81,16 +65,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="top-nav">
 					<span class="menu"> </span>
 					<ul class="cl-effect-16">
-					
   <li><a href="home.php">Home</a></li>
-  <li><a href="HouseOwner_List.php">HouseOwner's Request</a></li>
-  <li><a href="HouseOwner_List_active.php">Active HouseOwners </a></li>
-  <li><a href="UserList.php">User's Request</a></li>
-  <li><a href="UserList_active.php">Active Users</a></li>
-  <li><a href="ViewComplaints.php">Complaints</a></li>
+  <li><a href="viewProfile.php">Profile</a></li>
+  <li><a href="updateProfile.php">Update Profile</a></li>
+      <li><a href="viewproduct.php">View Home </a></li>
+	  	    <li><a href="addComplaint.php">Register Complaints </a></li>
+  <!-- <li><a href="sendmsg.php">Message</a></li> -->
   <li><a href="../chat/duplicate.php">Chat</a></li>
-  <li><a href="viewreportedpersons.php">Reported Persons</a></li>
+  <li><a href="cancelbooking.php">Cancel Booking</a></li>
+  <!-- <li><a href="../chatbox/index.php">ChatBox</a></li> -->
+
   <li><a href="logout.php">logout</a></li>
+</ul>
 						<div class="clearfix"> </div>
 					</ul>
 				</div>
@@ -111,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="container">
 						      <div class="section group">
 								<div class="col-md-6 gallery-box">
-										<div id="nivo-lightbox-demo"> <p> <a href="HOMERENTALSYSTEM/images/b1.png"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span></a> </p></div>     
+										<div id="nivo-lightbox-demo"> <p> <a href="images/b1.png"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span></a> </p></div>     
 									  	<img src="images/b1.png" alt="">
 							    </div>
 								<div class="col-md-6 gallery-box">

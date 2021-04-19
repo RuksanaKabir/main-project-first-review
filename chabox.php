@@ -11,7 +11,7 @@
 	
 	include 'dbconn.php';
 	
-			$sql="select * from chat where (senderid='$id' and sendertype='Admin') or (rid='$id' and rtype='Admin')"; //echo $sql;
+			$sql="select * from chat where (senderid='$id' and sendertype='User') or (rid='$id' and rtype='User')"; //echo $sql;
 			$result=mysql_query($sql);
 			$row=mysql_fetch_array($result);
 			$m = mysql_num_rows($result);
@@ -38,47 +38,11 @@
   { 
   ?>
   
-<?php $type= $r["sendertype"];  if($type == "Admin") { ?>
-<div style="background-color:#99CC99; padding:10px; width:400px;margin:10px; text-align:right;"><?php   echo $r["msg"]; ?> <b> : Me</b> To 
+<?php $type= $r["sendertype"]; if($type == "User") { ?>
+<div style="background-color:#99CC99; padding:10px; width:400px;margin:10px; text-align:right;"><?php   echo $r["msg"]; ?> <b> : Me</b></div>
 
-<?php  $rtype= $r["rtype"]; $rid= $r["rid"]; //echo $rtype;
-if($rtype =="User")
-{	
-	$sss="select * from user where id=$rid";
-		$ree=mysql_query($sss);
-		$rrr=mysql_fetch_array($ree);
-		echo $rrr["name"]; echo " (User)";
-                
-}
-if($rtype =="Owner")
-{	
-	$sss="select * from houseowner where id=$rid"; //echo $sql;
-		$ree=mysql_query($sss);
-		$rrr=mysql_fetch_array($ree);
-		echo $rrr["name"]; echo " (HouseOwner)";
-}
-
-  ?>
-</div>
-
-<?php  } else {  ?>
-<div style="background-color:#FF9999; padding:10px; width:400px; margin:10px; text-align:left;"><b><?php  $rtype= $r["sendertype"]; $rid= $r["senderid"]; //echo $rtype;
-if($rtype =="User")
-{	
-	$sss="select * from user where id=$rid";
-		$ree=mysql_query($sss);
-		$rrr=mysql_fetch_array($ree);
-		echo $rrr["name"]; echo " (User)";
-}
-if($rtype =="Owner")
-{	
-	$sss="select * from houseowner where id=$rid"; //echo $sql;
-		$ree=mysql_query($sss);
-		$rrr=mysql_fetch_array($ree);
-		echo $rrr["name"]; echo " (HouseOwner)";
-}
-
-  ?> : </b><?php  echo $r["msg"];   ?></div> <a href="sendmessage.php?id=<?php echo $rid; ?>&&rtype=<?php echo $rtype; ?>">Reply</a>
+<?php  }else {  ?>
+<div style="background-color:#FF9999; padding:10px; width:400px; margin:10px; text-align:left;"><b>Admin : </b><?php  echo $r["msg"];   ?></div>
   
   <?php } } ?>
 <?php } ?>
