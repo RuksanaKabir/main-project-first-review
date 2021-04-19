@@ -1,3 +1,34 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+session_start();
+ if($_SESSION['status']!="Active")
+{
+    header("location:../login.php");
+}
+ 
+include 'dbconn.php';
+$id =$_SESSION["id"];
+
+	
+$sql="select * from houseowner where id=$id"; //echo $sql;
+		$result=mysql_query($sql);
+		$r=mysql_fetch_array($result);
+		
+
+	?>
+
+
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -45,7 +76,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="container">
 			<!--logo-->
 			   <div class="logo">
-				<h1><a href="index.html">HOME INTERIO</a></h1>
+				<h1><a href="index.html">HOME INTERIO    <?php  echo $r["name"]; ?></a></h1>
 				</div>
 			<!--top-nav-->
 				<div class="top-icons">
@@ -65,18 +96,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="top-nav">
 					<span class="menu"> </span>
 					<ul class="cl-effect-16">
-  <li><a href="home.php">Home</a></li>
+					<li><a href="home.php">Home</a></li>
   <li><a href="viewProfile.php">Profile</a></li>
   <li><a href="updateProfile.php">Update Profile</a></li>
-      <li><a href="viewproduct.php">View Home </a></li>
-	  	    <li><a href="addComplaint.php">Register Complaints </a></li>
-  <!-- <li><a href="sendmsg.php">Message</a></li> -->
-  <li><a href="../chat/duplicate.php">Chat</a></li>
-  <li><a href="cancelbooking.php">Cancel Booking</a></li>
-  <!-- <li><a href="../chatbox/index.php">ChatBox</a></li> -->
-
+    <li><a href="addHome.php">Add Home </a></li>
+    <li><a href="ViewHomes.php">View Home </a></li>
+	    <li><a href="addComplaint.php"> Complaints </a></li>
+		  <li><a href="viewbooking.php">View Booking</a></li>
+		  <li><a href="../chat/duplicate.php">Chat</a></li>
   <li><a href="logout.php">logout</a></li>
-</ul>
 						<div class="clearfix"> </div>
 					</ul>
 				</div>
@@ -97,7 +125,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="container">
 						      <div class="section group">
 								<div class="col-md-6 gallery-box">
-										<div id="nivo-lightbox-demo"> <p> <a href="images/b1.png"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span></a> </p></div>     
+										<div id="nivo-lightbox-demo"> <p> <a href="HOMERENTALSYSTEM/images/b1.png"data-lightbox-gallery="gallery1" id="nivo-lightbox-demo"> <span class="rollover1"> </span></a> </p></div>     
 									  	<img src="images/b1.png" alt="">
 							    </div>
 								<div class="col-md-6 gallery-box">
@@ -493,5 +521,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									});
 								</script>
 					<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+</body>
+</html>
+
 </body>
 </html>

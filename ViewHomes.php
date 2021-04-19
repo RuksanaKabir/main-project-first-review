@@ -11,7 +11,7 @@ include 'dbconn.php';
 $id =$_SESSION["id"];
 	
 	
-	$sql="select * from homes "; //echo $sql;
+	$sql="select * from homes where hoid=$id "; //echo $sql;
 	$result=mysql_query($sql);
 	$row=mysql_fetch_array($result);
 	$m = mysql_num_rows($result);
@@ -54,7 +54,7 @@ while($r=mysql_fetch_array($res))
     <td>&nbsp;</td>
   </tr>
   <tr>
-    <td height="42"><a href="viewDetails.php?id=<?php echo $r["hid"]; ?>">View Details</a>  &nbsp;</td>
+    <td height="42"><a href="viewDetails.php?id=<?php echo $r["hid"]; ?>">View Details</a>  / <a href="RemoveHome.php?id=<?php echo $r["hid"]; ?>">Remove</a>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
   <tr>

@@ -65,18 +65,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="top-nav">
 					<span class="menu"> </span>
 					<ul class="cl-effect-16">
-				
-  <li><a href="home.php">Home</a></li>
+	
+          <li><a href="home.php">Home</a></li>
   <li><a href="viewProfile.php">Profile</a></li>
   <li><a href="updateProfile.php">Update Profile</a></li>
-      <li><a href="viewproduct.php">View Home </a></li>
-	  	    <li><a href="addComplaint.php">Register Complaints </a></li>
-			  <li><a href="cancelbooking.php">Cancel Booking</a></li>
-  <!-- <li><a href="sendmsg.php">Message</a></li> -->
-  <li><a href="../chat/duplicate.php">Chat</a></li>
-
+    <li><a href="addHome.php">Add Home </a></li>
+    <li><a href="ViewHomes.php">View Home </a></li>
+	    <li><a href="addComplaint.php"> Complaints </a></li>
+		<!-- <li><a href="sendmessage.php">Message</a></li> -->
+		<li><a href="viewbooking.php">View Booking</a></li>
+		  <li><a href="../chat/duplicate.php">Chat</a></li>
   <li><a href="logout.php">logout</a></li>
-</ul>
 						<div class="clearfix"> </div>
 					</ul>
 				</div>
@@ -92,6 +91,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</script>
 			<div class="clearfix"> </div>
 		</div>
+
+
+<style>
+		
+		.customers{
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 80%;
+  }
+  
+  .customers td, .customers th {
+	border: 1px solid #ddd;
+	padding: 8px;
+	width: 100px;
+  }
+  
+  .customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .customers tr:hover {background-color: #ddd;}
+  
+  .customers th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: tomato;
+	color: white;
+  }
+  a{
+    color: red;
+  }
+</style>
 		<!--/header-->
 
 

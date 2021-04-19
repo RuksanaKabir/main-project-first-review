@@ -11,7 +11,7 @@
 	
 	include 'dbconn.php';
 	
-			$sql="select * from chat where (senderid='$id' and sendertype='User') or (rid='$id' and rtype='User')"; //echo $sql;
+			$sql="select * from chat where (senderid='$id' and sendertype='Owner') or (rid='$id' and rtype='Owner')"; //echo $sql;
 			$result=mysql_query($sql);
 			$row=mysql_fetch_array($result);
 			$m = mysql_num_rows($result);
@@ -38,10 +38,10 @@
   { 
   ?>
   
-<?php $type= $r["sendertype"]; if($type == "User") { ?>
+<?php $type= $r["sendertype"]; if($type == "Owner") { ?>
 <div style="background-color:#99CC99; padding:10px; width:400px;margin:10px; text-align:right;"><?php   echo $r["msg"]; ?> <b> : Me</b></div>
 
-<?php  }else {  ?>
+<?php } else { ?>
 <div style="background-color:#FF9999; padding:10px; width:400px; margin:10px; text-align:left;"><b>Admin : </b><?php  echo $r["msg"];   ?></div>
   
   <?php } } ?>

@@ -4,18 +4,19 @@
 </head>
 <?php
 
- session_start();
+session_start();
  if($_SESSION['status']!="Active")
 {
     header("location:../login.php");
 }
-
+ 
 include("header.php"); 
 include 'dbconn.php';
 $id =$_SESSION["id"];
 
 	
-$sql="select * from user where id=$id"; //echo $sql;
+$sql="select * from houseowner where id=$id";
+// echo $sql;
 		$result=mysql_query($sql);
 		$r=mysql_fetch_array($result);
 
@@ -30,7 +31,7 @@ $sql="select * from user where id=$id"; //echo $sql;
 <div class="well">
 <form  name="form1" method="post" >
 
-  <table width="303" height="310">
+  <table width="303" height="232">
   
     <tr>
       <th width="137" scope="row"><div align="left"><em>Name</em></div></th>
@@ -60,27 +61,6 @@ $sql="select * from user where id=$id"; //echo $sql;
       <td>:</td>
       <td><label>
        <?php  echo $r["email"]; ?> 
-      </label></td>
-    </tr>
-	<tr>
-      <th scope="row"><div align="left"><em>Job</em></div></th>
-      <td>:</td>
-      <td><label>
-       <?php  echo $r["job"]; ?> 
-      </label></td>
-    </tr>
-	<tr>
-      <th scope="row"><div align="left"><em>Place </em></div></th>
-      <td>:</td>
-      <td><label>
-       <?php  echo $r["place"]; ?> 
-      </label></td>
-    </tr>
-	<tr>
-      <th scope="row"><div align="left"><em>PinCode </em></div></th>
-      <td>:</td>
-      <td><label>
-       <?php  echo $r["pincode"]; ?> 
       </label></td>
     </tr>
 	<tr>

@@ -5,11 +5,11 @@
 </head>
 <?php
 session_start();
-  if($_SESSION['status']!="Active")
+ if($_SESSION['status']!="Active")
 {
     header("location:../login.php");
 }
-
+ 
 include("header.php"); 
 include 'dbconn.php';
 $id =$_SESSION["id"];
@@ -49,22 +49,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				$phnErr ="Already Registered Mobile Number..!";
 				$status="true";
 			}
-	$job=$_POST['job'];
-	$place=$_POST['place'];
-	$pincode=$_POST['pincode'];
-		if(!preg_match("/^[0-9]{6}$/",$pincode))
-		{
-			$pinErr ="Enter 6 digit  Pin";
-			$status="true";
-		}
+			$adhar=$_POST['adhar'];
+			$job=$_POST['job'];
+			$salary=$_POST['salary'];
 	
 	if(!isset($status))
 	{
-		$sql="update user set name='$name',address='$address',email='$email',phone='$phone',job='$job',place='$place',pincode='$pincode' where id=$id";
+		$sql="update houseowner set name='$name',address='$address',email='$email',phone='$phone',job='$job',salary='$salary',adhar='$adhar' where id=$id";
 		//echo $sql;
 		mysql_query($sql) or die();
 		
-		$sql="update login set un1='$email',un2='$phone' where loginid=$id and type='User'";
+		$sql="update login set un1='$email',un2='$phone' where loginid=$id and type='Owner'";
 		//echo $sql;
 		mysql_query($sql) or die();
 		
@@ -74,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		$err = "Something went wrong.. Plz Try again.....";
 	
 }
-$sql="select * from user where id=$id";// echo $sql;
+$sql="select * from houseowner where id=$id";// echo $sql;
 		$result=mysql_query($sql);
 		$row=mysql_fetch_array($result);
 
@@ -95,24 +90,18 @@ $sql="select * from user where id=$id";// echo $sql;
  if(isset($err)) { ?>
  <div style="background-color:#FF3333; color:#FFFFFF; font-size:16px;  padding:20px; margin:0px 200px;"><?php echo $err; ?></div>
    <?php } ?>
+<form  name="form1" method="post" >
 
 
-   <div class="donate">
+<div class="donate">
 	<div class="container">
 		<div class="donate-main">
 			<div class="col-md-8 donate-right">
 				<div class="donate-top">
-					<br>
-					<br>
 
-
-
-
-<form  name="form1" method="post" >
- 
 <div>
 							<span>Name<label>:</label></span>
-              <input type="text" name="name" value="<?php echo $row["name"]; ?>"  required />
+              <input type="text" name="name" value="<?php echo $row["name"]; ?>" required />
         <span style="color:#FF0000;">
         <?php if(isset($nameErr)) echo $nameErr; ?>
         </span>
@@ -120,66 +109,59 @@ $sql="select * from user where id=$id";// echo $sql;
 							 <div class="clearfix"> </div>
 
 
-       
-							 <div>
+               <div>
 							<span>Address<label>:</label></span>
               <textarea name="address" cols="" rows=""><?php echo $row["address"]; ?></textarea>
 							 </div>
 							 <div class="clearfix"> </div>
 
-
-               <div>
-               <input type="email" name="email" value="<?php echo $row["email"]; ?>" required />
-      <span style="color:#FF0000;">
-      <?php if(isset($emailErr)) echo $emailErr; ?>
-							 </div>						 
-							 <div class="clearfix"> </div>
-
-
-   
-							 <div>
-							<span>Phone No<label>:</label></span>
-						  <input type="text" name="phone" value="<?php echo $row["phone"]; ?>" required />
-      <span style="color:#FF0000;">
-      <?php if(isset($phnErr)) echo $phnErr; ?>
-        </span>
-							 </div>
-							 <div class="clearfix"> </div>
-
+     
    
 							 <div>
 							<span>Job<label>:</label></span>
-              <input type="text" name="job" value="<?php echo $row["job"]; ?>" required />
+              <input type="text" name="job" value="<?php echo $row["job"]; ?>"  />
+							 </div>							 
+							 <div class="clearfix"> </div>
+							 
+  
+  
+							 <div>
+							<span>salary<label>:</label></span>
+							<input type="text" name="salary" value="<?php echo $row["salary"]; ?>"  />
       <span style="color:#FF0000;">
+      <?php if(isset($salaryErr)) echo $salaryErr; ?>
 							 </div>							 
 							 <div class="clearfix"> </div>
 
 
+              
+							 <div>
+							<span>Adhar no<label>:</label></span>
+              <input type="text" name="adhar" value="<?php echo $row["adhar"]; ?>"  />
+      <span style="color:#FF0000;">
+      <?php if(isset($adharErr)) echo $adharErr; ?>
+							 </div>							 
+							 <div class="clearfix"> </div>
+
+
+                             
+							 <div>
+							<span>Email Id<label>:</label></span>
+              <input type="email" name="email" value="<?php echo $row["email"]; ?>" required />
+      <span style="color:#FF0000;">
+      <?php if(isset($emailErr)) echo $emailErr; ?>
+							 </div>							 
+							 <div class="clearfix"> </div>
 
                <div>
-							<span>Place<label>:</label></span>
-						<input type="text" name="place" value="<?php echo $row["place"]; ?>" required />
+							<span>Phone No<label>:</label></span>
+              <input type="text" name="phone" value="<?php echo $row["phone"]; ?>" required />
       <span style="color:#FF0000;">
-        </span>
+      <?php if(isset($phnErr)) echo $phnErr; ?>
 							 </div>							 
 							 <div class="clearfix"> </div>
 
-
-
-							 <div>
-							<span>Pin Code<label>:</label></span>
-              <input type="text" name="pincode" value="<?php echo $row["pincode"]; ?>" required />
-      <span style="color:#FF0000;">
-      <?php if(isset($pinErr)) echo $pinErr; ?>
-        </span>
-							 </div>							 
-							 <div class="clearfix"> </div>
-
-
-               
-
-               <div class="clearfix"> </div>
-						<input type="submit" value="Submit">
+               <input type="submit" value="Submit">
 					
 					</form>
 				</div>
@@ -191,9 +173,4 @@ $sql="select * from user where id=$id";// echo $sql;
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-</div>
-
-<?php
-include("footer.php"); 
-?>
-
+</div> 

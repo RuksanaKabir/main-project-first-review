@@ -37,7 +37,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <body>
 
 <center>
-<h1> </h1>
+<h1>Add Complaint </h1>
 <?php
  if(isset($msg)) { ?>
  <div style="background-color:#66CC99; color:#FFFFFF; font-size:16px;  padding:20px; margin:0px 200px;"><?php echo $msg; ?></div>
@@ -56,10 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				<div class="donate-top">
 					<br>
 					<br>
-					<h1><center>Add Complaint</center> </h1>
-          <br>
-          <br>
-          <br>
+					<h1><center></center> </h1>
 					<form  name="form1" method="post"  enctype="multipart/form-data" >
 						
 						
